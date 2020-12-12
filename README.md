@@ -18,10 +18,10 @@ otherDocument = "myfolder/otherdocument.txt"
 
 ```
 PyNote has currently available **4 functions**:
-* `pynote.read(filename)`
-* `pynote.write(filename, textToWrite)`
-* `pynote.overwrite(filename, textToWrite)`
-* `pynote.linecount(filename)`
+* `pynote.read()`
+* `pynote.write()`
+* `pynote.overwrite()`
+* `pynote.linecount()`
 
 ---
 
@@ -49,7 +49,7 @@ textToWrite = "I love PyNote!"
 
 pynote.write(txtDocument, textToWrite)
 
-#Append to the new line:
+# Append to the new line:
 pynote.write(txtDocument, "\n" + textToWrite)
 ```
 
@@ -100,3 +100,10 @@ print(pynote.linecount(txtDocument))
 ## Coming soon
 
 * Supporting Python dictionaries, JSON files
+
+---
+
+## License
+
+Copyright (c) 2020 David Malášek
+Licensed under the [MIT License](LICENSE).
