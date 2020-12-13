@@ -1,109 +1,93 @@
 # PyNote
 
-PyNote is a Python module that makes it easier to write or read from a text document.
+PyNote is a simple Python module that makes it easier to write or read from a TXT or JSON files.
 
 ---
 
-Start by importing the module.
-```python
-import pynote
-```
+## Functions
 
-Prepare your `.txt` document. Don't forget to provide path to the file, if it's not existing in the same directory.
-```python
-import pynote
-
-txtDocument = "mydocument.txt"
-otherDocument = "myfolder/otherdocument.txt"
-
-```
-PyNote has currently available **4 functions**:
-* `pynote.read()`
-* `pynote.write()`
-* `pynote.overwrite()`
-* `pynote.linecount()`
+|  Name   |    Return    | Description                                                                                                             |
+| :-----: | :----------: | ----------------------------------------------------------------------------------------------------------------------- |
+| `read`  | `str`/`dict` | Returns a `str` or `dict` in UTF-8 depending on a file type.                                                            |
+| `write` |      -       | Writes to a TXT or JSON file in UTF-8. This function can also be used to overwrite a document (**TXT documents only**). |
+| `count` |    `int`     | Returns number of lines or items depending on a file type.                                                              |
 
 ---
 
 ## Read
 
-Returns entire document as a string.
+|  Argument  | Optional | Description           |
+| :--------: | :------: | --------------------- |
+| `fileName` |    No    | File path + File name |
+
+### Example
 
 ```python
 import pynote
 
-txtDocument = "mydocument.txt"
+# Create dictionary from JSON file
+jsonDictionary = pynote.read("folder/test.json")
 
-print(pynote.read(txtDocument))
+# Print value of the key "name"
+print(jsonDictionary["name"])
+>>> "Juan"
+
+print(pynote.read("folder/test.txt"))
+>>> "I love PyNote!"
 ```
+
+---
 
 ## Write
 
-Appends text to the document. Function will create a new file if the specified file does not exist.
+|  Argument   | Optional | Description                                                                                                      |
+| :---------: | :------: | ---------------------------------------------------------------------------------------------------------------- |
+| `fileName`  |    No    | File path + File name                                                                                            |
+|  `content`  |    No    | Content (`str`/`dict`), that will be added to the file.                                                          |
+| `overWrite` |   Yes    | By default is set to `False`. When `True`, function will overwrite the entire document (**TXT documents only**). |
+
+### Example
 
 ```python
 import pynote
 
-txtDocument = "mydocument.txt"
-textToWrite = "I love PyNote!"
+# Update value of the key "name" + Add a new item
+pynote.write("folder/test.json", {"name": "Harold", "age": 25})
 
-pynote.write(txtDocument, textToWrite)
+# Write a meaningful message
+pynote.write("folder/test.txt", "I ain't never seen two pretty best friends.")
 
-# Append to the new line:
-pynote.write(txtDocument, "\n" + textToWrite)
+# Erase an entire document with overWrite set to True
+pynote.write("folder/test.txt", "", True)
 ```
 
-## Overwrite
-
-Overwrites the entire document. Function will create a new file if the specified file does not exist.
-
-```python
-import pynote
-
-txtDocument = "mydocument.txt"
-textToOverWrite = "Yeet :)"
-
-pynote.overwrite(txtDocument, textToOverWrite)
-```
-
-You can also use this function as a eraser.
-
-```python
-import pynote
-
-txtDocument = "mydocument.txt"
-
-pynote.overwrite(txtDocument, "")
-```
-
-## Line Count
-
-Returns number of lines in a document as a integer.
-
-```python
-import pynote
-
-txtDocument = "mydocument.txt"
-
-print(pynote.linecount(txtDocument))
-```
+When reading a JSON file, you can simply work with the result as with a Python dictionary. Every change will be updated through the `content` argument.
 
 ---
 
-## Notes
+## Count
 
-* PyNote use **UTF-8** encoding. 
-* Every function will close after it's done.
+|  Argument  | Optional | Description           |
+| :--------: | :------: | --------------------- |
+| `fileName` |    No    | File path + File name |
 
----
+### Example
 
-## Coming soon
+```python
+import pynote
 
-* Supporting Python dictionaries, JSON files
+# Count number of lines in a TXT document
+txtLines = pynote.count("folder/test.txt")
+print(txtLines + 69)
+>>> 420
+
+# Count number of items in a root position in a JSON document
+print(pynote.count("folder/test.json"))
+>>> 3
+```
 
 ---
 
 ## License
 
-Copyright (c) 2020 David Malášek
 Licensed under the [MIT License](LICENSE).
