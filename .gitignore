@@ -1,4 +1,1 @@
-src/__pycache__
-src/test.py
-src/test.json
-src/test.txt
+test/

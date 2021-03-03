@@ -1,8 +1,6 @@
 # PyNote
 
-PyNote is a simple Python module that makes it easier to write or read from a TXT or JSON files.
-
----
+PyNote is a simple Python module that makes it easier to write or read from a TXT or JSON file.
 
 ## Functions
 
@@ -11,8 +9,6 @@ PyNote is a simple Python module that makes it easier to write or read from a TX
 | `read`  | `str`/`dict` | Returns a `str` or `dict` in UTF-8 depending on a file type.                                                            |
 | `write` |      -       | Writes to a TXT or JSON file in UTF-8. This function can also be used to overwrite a document (**TXT documents only**). |
 | `count` |    `int`     | Returns number of lines or items depending on a file type.                                                              |
-
----
 
 ## Read
 
@@ -35,8 +31,6 @@ print(jsonDictionary["name"])
 print(pynote.read("folder/test.txt"))
 >>> "I love PyNote!"
 ```
-
----
 
 ## Write
 
@@ -63,8 +57,6 @@ pynote.write("folder/test.txt", "", True)
 
 When reading a JSON file, you can simply work with the result as with a Python dictionary. Every change will be updated through the `content` argument.
 
----
-
 ## Count
 
 |  Argument  | Optional | Description           |
@@ -85,8 +77,6 @@ print(txtLines + 69)
 print(pynote.count("folder/test.json"))
 >>> 3
 ```
-
----
 
 ## License
 
